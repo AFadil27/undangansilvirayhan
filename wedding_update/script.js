@@ -70,49 +70,42 @@ if (guestName) {
 }
 
 
+
 /*
   ============================
   5. OPEN INVITATION
   ============================
 */
 
-if (openInvitationButton && opening) {
-  openInvitationButton.addEventListener("click", async () => {
-    // Buka halaman undangan
-    opening.classList.add("is-open");
+openInvitationButton.addEventListener("click", async () => {
+  // Sembunyikan halaman pembuka secara langsung
+  opening.style.display = "none";
 
-    // Tampilkan konten utama
-    if (mainContent) {
-      mainContent.classList.remove("hidden");
-    }
+  // Tampilkan konten utama
+  mainContent.classList.remove("hidden");
+  mainContent.style.display = "block";
 
-    // Tampilkan navigasi bawah
-    if (bottomNav) {
-      bottomNav.classList.remove("hidden");
-    }
+  // Tampilkan navigasi bawah
+  bottomNav.classList.remove("hidden");
+  bottomNav.style.display = "flex";
 
-    // Tampilkan tombol musik
-    if (musicButton) {
-      musicButton.classList.remove("hidden");
-    }
+  // Tampilkan tombol musik
+  musicButton.classList.remove("hidden");
 
-    // Coba putar musik
-    if (music) {
-      try {
-        await music.play();
-      } catch (error) {
-        console.log("Musik belum dapat diputar:", error);
-      }
-    }
+  // Coba putar musik
+  try {
+    await music.play();
+  } catch (error) {
+    console.log("Musik belum dapat diputar:", error);
+  }
 
-    // Perbarui status tombol musik
-    if (typeof updateMusicButton === "function") {
-      updateMusicButton();
-    }
+  // Perbarui status tombol musik
+  updateMusicButton();
 
-    // Aktifkan animasi halaman
-    document.body.classList.add("invitation-open");
-  });
+  // Aktifkan animasi halaman
+  document.body.classList.add("invitation-open");
+});
+
 }
 /*
   ============================
