@@ -77,8 +77,22 @@ if (guestName) {
 */
 
 openInvitationButton.addEventListener("click", async () => {
-  // Buka halaman undangan
-  opening.classList.add("is-open");
+  opening.style.opacity = "0";
+  opening.style.transition = "opacity 0.8s ease";
+
+  setTimeout(() => {
+    opening.classList.add("hidden");
+    mainContent.classList.remove("hidden");
+    bottomNav.classList.remove("hidden");
+    musicButton.classList.remove("hidden");
+
+    document.body.classList.remove("is-locked");
+
+    document.getElementById("home").scrollIntoView({
+      behavior: "instant",
+      block: "start"
+    });
+  }, 800);
 
   // Tampilkan tombol musik
   musicButton.classList.remove("hidden");
@@ -96,7 +110,6 @@ openInvitationButton.addEventListener("click", async () => {
   // Aktifkan animasi halaman undangan
   document.body.classList.add("invitation-open");
 });
-
 /*
   ============================
   COUNTDOWN REAL-TIME
