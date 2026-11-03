@@ -76,34 +76,27 @@ if (guestName) {
   ============================
 */
 
-if (openInvitationButton && openingScreen) {
-  openInvitationButton.addEventListener("click", async () => {
-    // Buka halaman undangan
-    openingScreen.classList.add("is-open");
+openInvitationButton.addEventListener("click", async () => {
+  // Buka halaman undangan
+  opening.classList.add("is-open");
 
-    // Tampilkan tombol musik
-    if (musicButton) {
-      musicButton.classList.remove("hidden");
-    }
+  // Tampilkan tombol musik
+  musicButton.classList.remove("hidden");
 
-    // Coba putar musik
-    if (music) {
-      try {
-        await music.play();
-      } catch (error) {
-        console.log("Musik belum dapat diputar:", error);
-      }
-    }
+  // Coba putar musik
+  try {
+    await music.play();
+  } catch (error) {
+    console.log("Musik belum dapat diputar:", error);
+  }
 
-    // Perbarui status tombol musik
-    if (typeof updateMusicButton === "function") {
-      updateMusicButton();
-    }
+  // Perbarui tampilan tombol musik
+  updateMusicButton();
 
-    // Aktifkan animasi halaman
-    document.body.classList.add("invitation-open");
-  });
-}
+  // Aktifkan animasi halaman undangan
+  document.body.classList.add("invitation-open");
+});
+
 /*
   ============================
   COUNTDOWN REAL-TIME
