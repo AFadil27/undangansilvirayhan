@@ -96,12 +96,12 @@ openInvitationButton.addEventListener("click", async () => {
 
   // Browser biasanya hanya mengizinkan audio setelah user klik.
   try {
-    await music.play();
-    musicButton.classList.add("is-playing");
-  } catch (error) {
-    console.log("Musik belum dimainkan:", error);
-  }
-});
+  await music.play();
+} catch (error) {
+  console.log("Musik belum dimainkan:", error);
+}
+
+updateMusicButton();
 
 
 /*
@@ -165,23 +165,44 @@ setInterval(updateCountdown, 1000);
 
 /*
   ============================
-  6. MUSIC
+  6. MUSIC ON / OFF
   ============================
 */
 
+function updateMusicButton() {
+  if (music.paused) {
+    musicButton.textContent = "♪";
+    musicButton.classList.remove("is-playing");
+    musicButton.setAttribute("aria-label", "Putar musik");
+    musicButton.setAttribute("title", "Putar musik");
+    musicButton.setAttribute("aria-pressed", "false");
+  } else {
+    musicButton.textContent = "♫";
+    musicButton.classList.add("is-playing");
+    musicButton.setAttribute("aria-label", "Matikan musik");
+    musicButton.setAttribute("title", "Matikan musik");
+    musicButton.setAttribute("aria-pressed", "true");
+  }
+}
+
+// Tombol ON / OFF
 musicButton.addEventListener("click", async () => {
   if (music.paused) {
     try {
       await music.play();
-      musicButton.classList.add("is-playing");
     } catch (error) {
-      console.log(error);
+      console.error("Musik gagal diputar:", error);
     }
   } else {
     music.pause();
-    musicButton.classList.remove("is-playing");
   }
+
+  updateMusicButton();
 });
+
+// Perbarui tampilan jika status audio berubah
+music.addEventListener("play", updateMusicButton);
+music.addEventListener("pause", updateMusicButton);
 
 
 /*
