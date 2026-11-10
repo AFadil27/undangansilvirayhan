@@ -1083,3 +1083,58 @@ h2 {
     width: calc(100% - 16px);
   }
 }
+
+/* =========================================================
+   TURUT MENGUNDANG
+   ========================================================= */
+
+.turut-mengundang-section {
+  min-height: auto;
+  padding: 85px 20px;
+  text-align: center;
+  color: var(--ivory-light);
+  background:
+    linear-gradient(rgba(91, 35, 30, 0.88), rgba(91, 35, 30, 0.92)),
+    url("./assets/foto-pengantin.jpg") center / cover no-repeat;
+}
+
+.turut-mengundang-section .eyebrow {
+  color: var(--ivory);
+  letter-spacing: 0.22em;
+  margin-bottom: 28px;
+}
+
+.turut-mengundang-list {
+  width: min(700px, 100%);
+  margin: 0 auto;
+  padding: 28px 24px;
+  border-top: 1px solid rgba(244, 233, 213, 0.45);
+  border-bottom: 1px solid rgba(244, 233, 213, 0.45);
+}
+
+.turut-mengundang-list p {
+  color: var(--ivory-light);
+  font-family: var(--serif);
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  line-height: 1.7;
+  margin: 0 0 10px;
+}
+
+.turut-mengundang-list p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 720px) {
+  .turut-mengundang-section {
+    padding: 70px 16px;
+  }
+
+  .turut-mengundang-list {
+    padding: 24px 14px;
+  }
+
+  .turut-mengundang-list p {
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+}
